@@ -18,7 +18,6 @@ public class ShadowView extends View {
     private float mRadius = 50;
     private int width;
     private int height;
-    private Paint rectPaint;
 
     public ShadowView(Context context) {
         this(context, null);
@@ -43,9 +42,6 @@ public class ShadowView extends View {
     private void initPaint(){
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        rectPaint = new Paint();
-        rectPaint.setAntiAlias(true);
-        rectPaint.setColor(Color.TRANSPARENT);
     }
 
     @Override

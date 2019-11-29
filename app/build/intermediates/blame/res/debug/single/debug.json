@@ -44,10 +44,6 @@
         "source": "/Users/zhangjianchuan/project/android/ShadowLib/app/src/main/res/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/zhangjianchuan/project/android/ShadowLib/app/build/intermediates/res/merged/debug/drawable_bg.png.flat",
-        "source": "/Users/zhangjianchuan/project/android/ShadowLib/app/src/main/res/drawable/bg.png"
-    },
-    {
         "merged": "/Users/zhangjianchuan/project/android/ShadowLib/app/build/intermediates/res/merged/debug/mipmap-hdpi_ic_launcher.png.flat",
         "source": "/Users/zhangjianchuan/project/android/ShadowLib/app/src/main/res/mipmap-hdpi/ic_launcher.png"
     },

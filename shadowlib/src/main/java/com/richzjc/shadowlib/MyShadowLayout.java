@@ -91,7 +91,7 @@ public class MyShadowLayout extends FrameLayout {
         cardView = new MyCardView(getContext());
         cardView.setElevation(0);
         cardView.setRadius(cardCornerRadius);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
         addView(cardView, params);
     }
 
