@@ -17,7 +17,7 @@
         <com.richzjc.shadowlib.MyShadowLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:hl_shadowRadius="20dp"
+            app:hl_shadowRadius="30dp"
             app:hl_cardCornerRadius="10dp"
             app:hl_shadowSolidColor="#123456"
             app:hl_bottomShow="true"

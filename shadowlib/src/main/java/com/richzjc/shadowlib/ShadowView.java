@@ -55,7 +55,7 @@ public class ShadowView extends View {
         Bitmap target = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         Canvas newCanvas = new Canvas(target);
         RectF rectF = new RectF(mShadowRadius, mShadowRadius, width - mShadowRadius, height - mShadowRadius);
-        mPaint.setColor(shadowSolidColor);
+        mPaint.setColor(Color.TRANSPARENT);
         newCanvas.drawRoundRect(rectF, mRadius, mRadius, mPaint);
         canvas.drawBitmap(target, getPaddingLeft(), getPaddingTop(), mPaint);
     }
