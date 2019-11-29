@@ -4,8 +4,8 @@ apply plugin: 'com.novoda.bintray-release' // must be applied after your artifac
 publish {
     userOrg = 'richzjc'
     groupId = 'com.richzjc'
-    artifactId = 'TabLayout'
-    publishVersion = '1.0.2'
+    artifactId = 'ShadowLib'
+    publishVersion = '1.0.0'
     desc = 'Oh hi, this is a nice description for a project, right?'
     website = 'https://github.com/novoda/bintray-release'
 }
