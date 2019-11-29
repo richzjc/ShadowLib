@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="#ffffff"
+        >
+        <com.richzjc.shadowlib.MyShadowLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:hl_shadowRadius="20dp"
+            app:hl_cardCornerRadius="10dp"
+            app:hl_shadowSolidColor="#123456"
+            app:hl_bottomShow="true"
+            app:hl_topShow="false"
+            app:hl_rightShow="true"
+            >
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:background="#f00" />
+        </com.richzjc.shadowlib.MyShadowLayout>
+    </LinearLayout>
+</LinearLayout>

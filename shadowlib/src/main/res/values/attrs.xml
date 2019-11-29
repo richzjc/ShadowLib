@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <declare-styleable name="ShadowLayout">
+        <attr name="hl_topShow" format="boolean" />
+        <attr name="hl_bottomShow" format="boolean" />
+        <attr name="hl_leftShow" format="boolean" />
+        <attr name="hl_rightShow" format="boolean" />
+        <attr name="hl_shadowRadius" format="dimension"/>
+        <attr name="hl_cardCornerRadius" format="dimension"/>
+        <attr name="hl_shadowColor" format="color|reference"/>
+        <attr name="hl_shadowSolidColor" format="color|reference"/>
+    </declare-styleable>
+</resources>

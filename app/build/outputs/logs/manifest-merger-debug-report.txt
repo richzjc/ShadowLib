@@ -1,0 +1,74 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/93fff44c7a66d6285fe7b5f0c66732b5/AndroidManifest.xml:2:1-11:12
+MERGED from [:shadowlib] /Users/zhangjianchuan/project/android/ShadowLib/shadowlib/build/intermediates/manifests/full/debug/AndroidManifest.xml:2:1-11:12
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/2b2d08c5d7a4eb19dec1f2479d4d0787/AndroidManifest.xml:17:1-22:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:3:5-42
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+	android:versionCode
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:1-21:12
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:2:11-69
+application
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/93fff44c7a66d6285fe7b5f0c66732b5/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/93fff44c7a66d6285fe7b5f0c66732b5/AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:10:9-35
+	android:label
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:8:9-41
+	android:roundIcon
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:9:9-54
+	android:icon
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:7:9-43
+	android:allowBackup
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:6:9-35
+activity#com.xiangpan.roundimageview.MainActivity
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/93fff44c7a66d6285fe7b5f0c66732b5/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/93fff44c7a66d6285fe7b5f0c66732b5/AndroidManifest.xml:5:5-7:41
+MERGED from [:shadowlib] /Users/zhangjianchuan/project/android/ShadowLib/shadowlib/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [:shadowlib] /Users/zhangjianchuan/project/android/ShadowLib/shadowlib/build/intermediates/manifests/full/debug/AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/2b2d08c5d7a4eb19dec1f2479d4d0787/AndroidManifest.xml:20:5-44
+MERGED from [androidx.cardview:cardview:1.0.0] /Users/zhangjianchuan/.gradle/caches/transforms-1/files-1.1/cardview-1.0.0.aar/2b2d08c5d7a4eb19dec1f2479d4d0787/AndroidManifest.xml:20:5-44
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		ADDED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/zhangjianchuan/project/android/ShadowLib/app/src/main/AndroidManifest.xml
