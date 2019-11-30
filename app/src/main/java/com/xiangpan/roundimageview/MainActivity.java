@@ -3,6 +3,8 @@ package com.xiangpan.roundimageview;
 import android.app.Activity;
 import android.os.Bundle;
 
+import com.richzjc.shadowlib.MyShadowLayout;
+
 public class MainActivity extends Activity {
 
     @Override

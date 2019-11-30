@@ -9,7 +9,7 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
-public class ShadowView extends View {
+class ShadowView extends View {
 
     private Paint mPaint;
     private int mShadowColor = 0xffe4e4e4;

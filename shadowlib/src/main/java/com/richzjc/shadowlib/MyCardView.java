@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
 
-public class MyCardView extends CardView {
+class MyCardView extends CardView {
 
     private int leftPadding;
     private int topPadding;
