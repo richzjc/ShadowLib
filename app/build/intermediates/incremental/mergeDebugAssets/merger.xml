@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config=":shadowlib"><source path="/Users/zhangjianchuan/project/android/ShadowLib/shadowlib/build/intermediates/packagedAssets/debug"/></dataSet><dataSet config="main"><source path="/Users/zhangjianchuan/project/android/ShadowLib/app/src/main/assets"/><source path="/Users/zhangjianchuan/project/android/ShadowLib/app/build/generated/assets/shaders/debug"/></dataSet><dataSet config="debug"><source path="/Users/zhangjianchuan/project/android/ShadowLib/app/src/debug/assets"/></dataSet></merger>
