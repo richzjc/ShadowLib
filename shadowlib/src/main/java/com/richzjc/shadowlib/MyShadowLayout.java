@@ -29,7 +29,6 @@ public class MyShadowLayout extends FrameLayout {
     private final String TAG = MyShadowLayout.class.getSimpleName();
     private Rect cardViewRect = new Rect();
     private Rect shadowRect = new Rect();
-    private int cardViewBackgroundColor = Color.TRANSPARENT;
 
 
     public void setShadowShow(boolean leftShow, boolean topShow, boolean rightShow, boolean bottomShow) {
@@ -91,7 +90,6 @@ public class MyShadowLayout extends FrameLayout {
     @Override
     public void setBackground(Drawable background) {
         if (background instanceof ColorDrawable) {
-            cardViewBackgroundColor = ((ColorDrawable) background).getColor();
             if (cardView != null) {
                 cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
             }else{
