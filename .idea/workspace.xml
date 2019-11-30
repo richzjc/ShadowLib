@@ -6,7 +6,8 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="error" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="MyShadowLayout" />
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
@@ -22,17 +23,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/4.4/taskHistory/taskHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/merger.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/merged/debug/drawable_bg.png.flat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/test/java/com/xiangpan/roundimageview/ExampleUnitTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shadowlib/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/shadowlib/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java" beforeDir="false" afterPath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java" beforeDir="false" afterPath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/ShadowView.java" beforeDir="false" afterPath="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/ShadowView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shadowlib/src/test/java/com/richzjc/shadowlib/ExampleUnitTest.java" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -43,7 +39,7 @@
   <component name="DefaultGradleProjectSettings">
     <option name="isMigrated" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="39afd294" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="Android_Accelerated_Oreo" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -61,10 +57,13 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1171">
-              <caret line="123" column="9" lean-forward="true" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
+            <state relative-caret-position="228">
+              <caret line="185" selection-start-line="185" selection-end-line="185" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#setShadowShow#0;class#MyShadowLayout#0" />
+                <element signature="method#MyShadowLayout#1;class#MyShadowLayout#0" />
+                <element signature="method#addView#0;class#MyShadowLayout#0" />
               </folding>
             </state>
           </provider>
@@ -73,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="611">
-              <caret line="45" selection-start-line="45" selection-end-line="45" />
+            <state relative-caret-position="382">
+              <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,15 +82,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/ShadowView.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="155">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2" />
         </entry>
       </file>
     </leaf>
@@ -105,7 +102,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>draw</find>
       <find>inflate</find>
       <find>mRadius</find>
       <find>addToCardView</find>
@@ -114,6 +110,13 @@
       <find>layout</find>
       <find>onMeasure</find>
       <find>dialogCornerRadius</find>
+      <find>draw</find>
+      <find>mBackground</find>
+      <find>mBackground =</find>
+      <find>setBackgroundDrawable</find>
+      <find>setBackground</find>
+      <find>drawBackground</find>
+      <find>background</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -131,16 +134,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/xiangpan/roundimageview/RoundImageView.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xiangpan/roundimageview/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/xiangpan/roundimageview/MyFrameLayout.java" />
-        <option value="$PROJECT_DIR$/shadowlib/src/main/res/values/attrs.xml" />
         <option value="$PROJECT_DIR$/app/build.gradle" />
-        <option value="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java" />
         <option value="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyFrameLayout.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/attrs.xml" />
         <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/shadowlib/build.gradle" />
         <option value="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/ShadowView.java" />
+        <option value="$PROJECT_DIR$/shadowlib/src/main/res/values/attrs.xml" />
+        <option value="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java" />
         <option value="$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
       </list>
     </option>
   </component>
@@ -219,6 +222,32 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="roundimageview" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ShadowLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ShadowLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ShadowLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ShadowLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ShadowLib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ShadowLib" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="app" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="res" type="462c0819:PsiDirectoryNode" />
+              <item name="mipmap-anydpi-v26" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ShadowLib" type="b2602c69:ProjectViewProjectNode" />
@@ -455,15 +484,28 @@
       <option name="project" value="LOCAL" />
       <updated>1575021087824</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="add files">
+      <created>1575024252384</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1575024252384</updated>
+    </task>
+    <task id="LOCAL-00005" summary="add files">
+      <created>1575024413381</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1575024413381</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="6" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.26800978" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.18376069" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -472,14 +514,14 @@
       <window_info id="Resources Explorer" order="7" />
       <window_info id="Capture Tool" order="8" />
       <window_info anchor="bottom" id="Run" order="0" />
-      <window_info anchor="bottom" id="Logcat" order="1" weight="0.031347964" />
+      <window_info anchor="bottom" id="Logcat" order="1" weight="0.28944618" />
       <window_info anchor="bottom" id="TODO" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37304077" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.3291536" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.42110762" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.17032392" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="6" weight="0.3291536" />
-      <window_info anchor="bottom" id="Build" order="7" visible="true" weight="0.05956113" />
-      <window_info anchor="bottom" id="Android Profiler" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Build" order="7" weight="0.38557994" />
+      <window_info anchor="bottom" id="Android Profiler" order="8" />
       <window_info anchor="bottom" id="Find" order="9" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
@@ -493,10 +535,44 @@
     <MESSAGE value="add files" />
     <option name="LAST_COMMIT_MESSAGE" value="add files" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java</url>
+          <line>185</line>
+          <properties />
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java</url>
+          <line>227</line>
+          <properties />
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java</url>
+          <line>134</line>
+          <properties />
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="debuggerHistoryManager">
     <expressions id="evaluateCodeFragment">
       <expression>
+        <expression-string>getMeasuredHeight()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>getMeasuredWidth()</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>MeasureSpec.getSize(widthMeasureSpec)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>CODE_FRAGMENT</evaluation-mode>
       </expression>
@@ -564,17 +640,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.cardview/cardview/1.0.0/c9f3ce7ca74ad2c978230f4094ba6804c5166f9c/cardview-1.0.0-sources.jar!/androidx/cardview/widget/CardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="230" column="28" selection-start-line="230" selection-start-column="19" selection-end-line="230" selection-end-column="28" />
-          <folding>
-            <element signature="e#14116#14117#0" expanded="true" />
-            <element signature="e#14158#14159#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradle.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -603,13 +668,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="200">
           <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/shadowlib/src/main/res/values/attrs.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
         </state>
       </provider>
     </entry>
@@ -643,21 +701,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="40" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/bg.png" />
     <entry file="file://$PROJECT_DIR$/app/src/test/java/com/xiangpan/roundimageview/ExampleUnitTest.java" />
     <entry file="file://$PROJECT_DIR$/shadowlib/src/test/java/com/richzjc/shadowlib/ExampleUnitTest.java" />
     <entry file="file://$PROJECT_DIR$/shadowlib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="29" column="24" selection-start-line="29" selection-start-column="24" selection-end-line="29" selection-end-column="24" />
+        <state relative-caret-position="160">
+          <caret line="8" column="33" selection-start-line="8" selection-start-column="33" selection-end-line="8" selection-end-column="33" />
         </state>
       </provider>
     </entry>
@@ -671,32 +721,93 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/shadowlib/src/main/res/values/attrs.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="12" column="39" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-29/android/view/ViewGroup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="3892" column="60" selection-start-line="3892" selection-start-column="60" selection-end-line="3892" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-29/android/view/View.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="21639" column="17" selection-start-line="21639" selection-start-column="17" selection-end-line="21639" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/ShadowView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="57" column="42" lean-forward="true" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="42" />
+        <state relative-caret-position="568">
+          <caret line="57" column="7" selection-start-line="57" selection-start-column="7" selection-end-line="57" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.cardview/cardview/1.0.0/c9f3ce7ca74ad2c978230f4094ba6804c5166f9c/cardview-1.0.0-sources.jar!/androidx/cardview/widget/CardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2661">
+          <caret line="281" column="16" selection-start-line="281" selection-start-column="16" selection-end-line="281" selection-end-column="16" />
+          <folding>
+            <element signature="e#14116#14117#0" expanded="true" />
+            <element signature="e#14158#14159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-29/android/graphics/drawable/ColorDrawable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="79" column="14" lean-forward="true" selection-start-line="79" selection-start-column="14" selection-end-line="79" selection-end-column="14" />
+          <folding>
+            <element signature="e#3937#3938#0" expanded="true" />
+            <element signature="e#3981#3982#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Android/sdk/sources/android-29/android/widget/FrameLayout.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="428" column="24" selection-start-line="428" selection-start-column="24" selection-end-line="428" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyCardView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        <state relative-caret-position="382">
+          <caret line="34" column="32" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/shadowlib/src/main/java/com/richzjc/shadowlib/MyShadowLayout.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1171">
-          <caret line="123" column="9" lean-forward="true" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
+        <state relative-caret-position="228">
+          <caret line="185" selection-start-line="185" selection-end-line="185" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setShadowShow#0;class#MyShadowLayout#0" />
+            <element signature="method#MyShadowLayout#1;class#MyShadowLayout#0" />
+            <element signature="method#addView#0;class#MyShadowLayout#0" />
           </folding>
         </state>
       </provider>

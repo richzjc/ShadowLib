@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.Rect;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -18,7 +20,7 @@ public class MyShadowLayout extends FrameLayout {
     private boolean leftShow;
     private boolean rightShow;
     private int shadowColor;
-    private int shadowSolidColor;
+    private int shadowSolidColor = Color.TRANSPARENT;
     private float shadowRadius;
     private float cardCornerRadius;
     private ShadowView shadowView;
@@ -26,6 +28,8 @@ public class MyShadowLayout extends FrameLayout {
     private final String TAG = MyShadowLayout.class.getSimpleName();
     private Rect cardViewRect = new Rect();
     private Rect shadowRect = new Rect();
+    private int cardViewBackgroundColor = Color.TRANSPARENT;
+
 
     public void setShadowShow(boolean leftShow, boolean topShow, boolean rightShow, boolean bottomShow) {
         this.leftShow = leftShow;
@@ -64,11 +68,21 @@ public class MyShadowLayout extends FrameLayout {
             leftShow = attr.getBoolean(R.styleable.ShadowLayout_hl_leftShow, true);
             rightShow = attr.getBoolean(R.styleable.ShadowLayout_hl_rightShow, true);
             shadowColor = attr.getColor(R.styleable.ShadowLayout_hl_shadowColor, Color.parseColor("#747f8c33"));
-            shadowSolidColor = attr.getColor(R.styleable.ShadowLayout_hl_shadowSolidColor, Color.BLUE);
+            shadowSolidColor = attr.getColor(R.styleable.ShadowLayout_hl_shadowSolidColor, Color.TRANSPARENT);
             shadowRadius = attr.getDimension(R.styleable.ShadowLayout_hl_shadowRadius, 0);
             cardCornerRadius = attr.getDimension(R.styleable.ShadowLayout_hl_cardCornerRadius, 0);
         } finally {
             attr.recycle();
+        }
+    }
+
+    @Override
+    public void setBackground(Drawable background) {
+        if (background instanceof ColorDrawable) {
+            cardViewBackgroundColor = ((ColorDrawable) background).getColor();
+            if (cardView != null) {
+                cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
+            }
         }
     }
 
@@ -91,7 +105,8 @@ public class MyShadowLayout extends FrameLayout {
         cardView = new MyCardView(getContext());
         cardView.setElevation(0);
         cardView.setRadius(cardCornerRadius);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+        cardView.setCardBackgroundColor(cardViewBackgroundColor);
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addView(cardView, params);
     }
 
@@ -106,92 +121,128 @@ public class MyShadowLayout extends FrameLayout {
             itemParams.bottomMargin = mps.bottomMargin;
         }
         setShadowPadding();
+        cardView.setContentPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
         cardView.addView(child, itemParams);
     }
 
     @Override
+    public void setPadding(int left, int top, int right, int bottom) {
+        cardView.setContentPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
+    }
+
+    @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        int paddingLeft = getPaddingLeft();
-        int paddingTop = getPaddingTop();
-        int paddingRight = getPaddingRight();
-        int paddingBottom = getPaddingBottom();
-        int width = cardView.getMeasuredWidth();
-        int height = cardView.getMeasuredHeight();
-        Log.i(TAG, "height = " + height + ", width  = " + width);
+        measureChildWithMargins(cardView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+        Log.i(TAG, cardView.getMeasuredWidth() + ", " + cardView.getMeasuredHeight());
+        LayoutParams cardViewParams = (LayoutParams) cardView.getLayoutParams();
+        int cardViewWidth = cardView.getMeasuredWidth();
+        int cardViewHeight = cardView.getMeasuredHeight();
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int widthSizeSpec = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSizeSpec = MeasureSpec.getSize(heightMeasureSpec);
+        int realWidth;
+        int realHeight;
 
-        int cardViewWidth = width;
-        int cardviewHeight = height;
+        switch (widthMode) {
+            case MeasureSpec.AT_MOST:
+                if (widthSizeSpec < cardViewWidth) {
+                    realWidth = widthSizeSpec;
+                } else {
+                    realWidth = cardViewWidth + cardViewParams.leftMargin + cardViewParams.rightMargin;
+                    if (leftShow)
+                        realWidth += shadowRadius;
+
+                    if (rightShow)
+                        realWidth += shadowRadius;
+                    realWidth = Math.min(realWidth, widthSizeSpec);
+                }
+                break;
+
+            default:
+                realWidth = widthSizeSpec;
+        }
+
+        switch (heightMode) {
+            case MeasureSpec.AT_MOST:
+                if (heightSizeSpec < cardViewHeight) {
+                    realHeight = heightSizeSpec;
+                } else {
+                    realHeight = cardViewHeight + cardViewParams.topMargin + cardViewParams.bottomMargin;
+
+                    if (topShow)
+                        realHeight += shadowRadius;
+
+                    if (bottomShow)
+                        realHeight += shadowRadius;
+                    realHeight = Math.min(realHeight, heightSizeSpec);
+                }
+                break;
+
+            default:
+                realHeight = heightSizeSpec;
+        }
+        setMeasuredDimension(realWidth, realHeight);
+        setSubChildMeasure();
+    }
+
+    private void setSubChildMeasure() {
+        int shadowWidth = getMeasuredWidth();
+        int shadowHeight = getMeasuredHeight();
+
+        int cardViewWidth = getMeasuredWidth();
+        int cardviewHeight = getMeasuredHeight();
+
         if (leftShow) {
-            cardViewWidth = (int) (cardViewWidth - shadowRadius);
-            cardViewRect.left = (int) (paddingLeft + shadowRadius);
+            shadowRect.left = 0;
+            cardViewWidth -= shadowRadius;
+            cardViewRect.left = (int) shadowRadius;
         } else {
-            cardViewWidth = (int) (cardViewWidth + paddingLeft + cardCornerRadius + shadowRadius);
+            cardViewWidth += (shadowRadius + cardCornerRadius);
             cardViewRect.left = (int) -(shadowRadius + cardCornerRadius);
-        }
-
-        if (rightShow) {
-            cardViewWidth = (int) (cardViewWidth - shadowRadius);
-            cardViewRect.right = cardViewRect.left + cardViewWidth;
-        }else{
-            cardViewWidth = (int) (cardViewWidth + paddingRight + cardCornerRadius + shadowRadius);
-            cardViewRect.right = cardViewRect.left + cardViewWidth;
-        }
-
-        if (topShow) {
-            cardviewHeight = height;
-            cardViewRect.top = (int) shadowRadius + paddingTop;
-        } else {
-            cardviewHeight = (int) (cardviewHeight + paddingTop + cardCornerRadius  + shadowRadius);
-            cardViewRect.top = (int) -(shadowRadius + cardCornerRadius);
-        }
-
-        if(bottomShow){
-            cardViewRect.bottom = cardViewRect.top + cardviewHeight;
-        }else{
-            cardviewHeight = (int) (cardviewHeight + paddingBottom + cardCornerRadius  + shadowRadius);
-            cardViewRect.bottom = cardViewRect.top + cardviewHeight;
-        }
-
-        cardView.measure(MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY));
-
-        int shadowWidth = width;
-        int shadowHeight = height;
-        int realHeight = height + paddingTop + paddingBottom;
-
-        if (leftShow) {
-            shadowRect.left = paddingLeft;
-        } else {
-            shadowWidth = (int) (shadowWidth + paddingLeft + shadowRadius + cardCornerRadius);
+            shadowWidth = (int) (shadowWidth + shadowRadius + cardCornerRadius);
             shadowRect.left = (int) -(shadowRadius + cardCornerRadius);
         }
 
-        if (rightShow) {
-            shadowRect.right = shadowRect.left + shadowWidth;
-        } else {
-            shadowWidth = (int) (shadowWidth + paddingRight + shadowRadius + cardCornerRadius);
-            shadowRect.right = shadowRect.left + shadowWidth;
+        if (!rightShow) {
+            shadowWidth = (int) (shadowWidth + shadowRadius + cardCornerRadius);
+        }
+        shadowRect.right = shadowRect.left + shadowWidth;
+
+        if(rightShow){
+            cardViewWidth -= shadowRadius;
+            cardViewRect.right = cardViewRect.left + cardViewWidth;
+        }else{
+            cardViewWidth += (shadowRadius + cardCornerRadius);
+            cardViewRect.right = cardViewRect.left + cardViewWidth;
         }
 
         if (topShow) {
-            realHeight = (int) (realHeight + shadowRadius);
-            shadowRect.top = paddingTop;
+            shadowRect.top = 0;
+            cardviewHeight -= shadowRadius;
+            cardViewRect.top = (int) shadowRadius;
         } else {
-            realHeight = height + paddingTop + paddingBottom;
-            shadowHeight = (int) (shadowHeight + paddingTop + shadowRadius + cardCornerRadius);
+            shadowHeight = (int) (shadowHeight + shadowRadius + cardCornerRadius);
             shadowRect.top = (int) -(shadowRadius + cardCornerRadius);
+            cardviewHeight += (shadowRadius + cardCornerRadius);
+            cardViewRect.top = (int) -(shadowRadius + cardCornerRadius);
         }
 
-        if (bottomShow) {
-            realHeight = (int) (realHeight + shadowRadius);
-            shadowRect.bottom = (int) (cardViewRect.bottom + shadowRadius);
-        } else {
-            shadowHeight = (int) (shadowHeight + paddingBottom + shadowRadius + cardCornerRadius);
+        if (!bottomShow) {
+            shadowHeight = (int) (shadowHeight + shadowRadius + cardCornerRadius);
+        }
             shadowRect.bottom = shadowRect.top + shadowHeight;
+
+        if(bottomShow){
+            cardviewHeight -= shadowRadius;
+            cardViewRect.bottom = cardViewRect.top + cardviewHeight;
+        }else{
+            cardviewHeight += (shadowRadius + cardCornerRadius);
+            cardViewRect.bottom = cardViewRect.top + cardviewHeight;
         }
 
         shadowView.measure(MeasureSpec.makeMeasureSpec(shadowWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(shadowHeight, MeasureSpec.EXACTLY));
-        setMeasuredDimension(width + paddingLeft + paddingRight, realHeight);
+        cardView.measure(MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY));
     }
 
     @Override

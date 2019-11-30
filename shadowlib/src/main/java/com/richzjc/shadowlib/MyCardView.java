@@ -33,7 +33,12 @@ public class MyCardView extends CardView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         if (getChildCount() > 0) {
-            getChildAt(0).layout(leftPadding, topPadding, getWidth() - rightPadding, getHeight() - bottomPadding);
+            LayoutParams params = (LayoutParams) getChildAt(0).getLayoutParams();
+            if (params != null) {
+                getChildAt(0).layout(leftPadding + getContentPaddingLeft() + params.leftMargin, topPadding + getContentPaddingTop() + params.topMargin, getWidth() - rightPadding - getContentPaddingRight() - params.rightMargin, getHeight() - bottomPadding - getContentPaddingBottom() - params.bottomMargin);
+            } else {
+                getChildAt(0).layout(leftPadding + getContentPaddingLeft(), topPadding + getContentPaddingTop(), getWidth() - rightPadding - getContentPaddingRight(), getHeight() - bottomPadding - getContentPaddingBottom());
+            }
         }
     }
 

@@ -15,8 +15,8 @@
         android:background="#ffffff"
         >
         <com.richzjc.shadowlib.MyShadowLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
             app:hl_shadowRadius="30dp"
             app:hl_cardCornerRadius="10dp"
             app:hl_shadowSolidColor="#123456"
@@ -25,8 +25,8 @@
             app:hl_rightShow="true"
             >
             <TextView
-                android:layout_width="300dp"
-                android:layout_height="300dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:background="#f00" />
         </com.richzjc.shadowlib.MyShadowLayout>
     </LinearLayout>
