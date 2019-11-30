@@ -33,11 +33,18 @@ public class MyCardView extends CardView {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         if (getChildCount() > 0) {
-            LayoutParams params = (LayoutParams) getChildAt(0).getLayoutParams();
+            View child = getChildAt(0);
+            LayoutParams params = (LayoutParams) child.getLayoutParams();
             if (params != null) {
-                getChildAt(0).layout(leftPadding + getContentPaddingLeft() + params.leftMargin, topPadding + getContentPaddingTop() + params.topMargin, getWidth() - rightPadding - getContentPaddingRight() - params.rightMargin, getHeight() - bottomPadding - getContentPaddingBottom() - params.bottomMargin);
+                getChildAt(0).layout(leftPadding + getContentPaddingLeft() + params.leftMargin,
+                        topPadding + getContentPaddingTop() + params.topMargin,
+                        leftPadding + getContentPaddingLeft() + params.leftMargin + child.getMeasuredWidth(),
+                        topPadding + getContentPaddingTop() + params.topMargin + child.getMeasuredHeight());
             } else {
-                getChildAt(0).layout(leftPadding + getContentPaddingLeft(), topPadding + getContentPaddingTop(), getWidth() - rightPadding - getContentPaddingRight(), getHeight() - bottomPadding - getContentPaddingBottom());
+                getChildAt(0).layout(leftPadding + getContentPaddingLeft(),
+                        topPadding + getContentPaddingTop(),
+                        leftPadding + getContentPaddingLeft() + child.getMeasuredWidth(),
+                        topPadding + getContentPaddingTop() + child.getMeasuredHeight());
             }
         }
     }

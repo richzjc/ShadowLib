@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -50,11 +51,22 @@ public class MyShadowLayout extends FrameLayout {
 
     public MyShadowLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        createCardView();
+        createShadowView();
         initAttributes(attrs);
         initShadowView();
         initCardView();
     }
 
+    private void createCardView() {
+        if (cardView == null)
+            cardView = new MyCardView(getContext());
+    }
+
+    private void createShadowView() {
+        if (shadowView == null)
+            shadowView = new ShadowView(getContext());
+    }
 
     private void initAttributes(AttributeSet attrs) {
         TypedArray attr = getContext().obtainStyledAttributes(attrs, R.styleable.ShadowLayout);
@@ -82,6 +94,10 @@ public class MyShadowLayout extends FrameLayout {
             cardViewBackgroundColor = ((ColorDrawable) background).getColor();
             if (cardView != null) {
                 cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
+            }else{
+                createCardView();
+                createShadowView();
+                cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
             }
         }
     }
@@ -96,16 +112,13 @@ public class MyShadowLayout extends FrameLayout {
     }
 
     private void initShadowView() {
-        shadowView = new ShadowView(getContext());
         shadowView.setAttrs(shadowColor, shadowRadius, cardCornerRadius, shadowSolidColor);
         addView(shadowView, 0);
     }
 
     private void initCardView() {
-        cardView = new MyCardView(getContext());
         cardView.setElevation(0);
         cardView.setRadius(cardCornerRadius);
-        cardView.setCardBackgroundColor(cardViewBackgroundColor);
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
         addView(cardView, params);
     }
@@ -209,10 +222,10 @@ public class MyShadowLayout extends FrameLayout {
         }
         shadowRect.right = shadowRect.left + shadowWidth;
 
-        if(rightShow){
+        if (rightShow) {
             cardViewWidth -= shadowRadius;
             cardViewRect.right = cardViewRect.left + cardViewWidth;
-        }else{
+        } else {
             cardViewWidth += (shadowRadius + cardCornerRadius);
             cardViewRect.right = cardViewRect.left + cardViewWidth;
         }
@@ -231,12 +244,12 @@ public class MyShadowLayout extends FrameLayout {
         if (!bottomShow) {
             shadowHeight = (int) (shadowHeight + shadowRadius + cardCornerRadius);
         }
-            shadowRect.bottom = shadowRect.top + shadowHeight;
+        shadowRect.bottom = shadowRect.top + shadowHeight;
 
-        if(bottomShow){
+        if (bottomShow) {
             cardviewHeight -= shadowRadius;
             cardViewRect.bottom = cardViewRect.top + cardviewHeight;
-        }else{
+        } else {
             cardviewHeight += (shadowRadius + cardCornerRadius);
             cardViewRect.bottom = cardViewRect.top + cardviewHeight;
         }
@@ -258,16 +271,16 @@ public class MyShadowLayout extends FrameLayout {
         int leftPadding = 0;
         int rightPadding = 0;
         if (!topShow)
-            topPadding = (int) (getPaddingTop() + shadowRadius + cardCornerRadius);
+            topPadding = (int) (shadowRadius + cardCornerRadius);
 
         if (!bottomShow)
-            bottomPadding = (int) (getPaddingBottom() + shadowRadius + cardCornerRadius);
+            bottomPadding = (int) (shadowRadius + cardCornerRadius);
 
         if (!leftShow)
-            leftPadding = (int) (getPaddingLeft() + shadowRadius + cardCornerRadius);
+            leftPadding = (int) (shadowRadius + cardCornerRadius);
 
         if (!rightShow)
-            rightPadding = (int) (getPaddingRight() + shadowRadius + cardCornerRadius);
+            rightPadding = (int) (shadowRadius + cardCornerRadius);
 
         cardView.setMyPadding(leftPadding, topPadding, rightPadding, bottomPadding);
     }
