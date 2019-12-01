@@ -10,26 +10,51 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center"
         android:background="#ffffff"
-        >
+        android:orientation="vertical">
+
         <com.richzjc.shadowlib.MyShadowLayout
             android:layout_width="wrap_content"
-            android:layout_height="200dp"
+            android:layout_height="150dp"
             android:background="#000"
             android:paddingLeft="10dp"
-            app:hl_shadowRadius="30dp"
-            app:hl_cardCornerRadius="10dp"
-            app:hl_shadowSolidColor="#123456"
             app:hl_bottomShow="true"
-            app:hl_topShow="true"
+            app:hl_cardCornerRadius="10dp"
             app:hl_rightShow="true"
-            >
+            app:hl_shadowColor="#f00"
+            app:hl_shadowRadius="30dp"
+            app:hl_shadowSolidColor="#123456"
+            app:hl_topShow="true">
+
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:background="#f00" />
+        </com.richzjc.shadowlib.MyShadowLayout>
+
+        <com.richzjc.shadowlib.MyShadowLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000"
+            android:paddingLeft="10dp"
+            app:hl_bottomShow="false"
+            app:hl_cardCornerRadius="10dp"
+            app:hl_rightShow="true"
+            app:hl_shadowColor="#f00"
+            app:hl_shadowRadius="30dp"
+            app:hl_shadowSolidColor="#123456"
+            app:hl_topShow="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="#f00" />
+            </LinearLayout>
         </com.richzjc.shadowlib.MyShadowLayout>
     </LinearLayout>
 </LinearLayout>
