@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.richzjc.shadowlib.MyShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="500dp"
-    android:layout_height="100dp"
+    android:layout_width="200dp"
+    android:layout_height="200dp"
+    android:layout_marginTop="15dp"
     android:layout_marginLeft="15dp"
     android:layout_marginRight="15dp"
     app:hl_cardCornerRadius="5dp"

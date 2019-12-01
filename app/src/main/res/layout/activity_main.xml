@@ -21,10 +21,10 @@
             app:hl_bottomShow="true"
             app:hl_cardCornerRadius="10dp"
             app:hl_rightShow="true"
-            app:hl_shadowColor="#f00"
             app:hl_shadowRadius="30dp"
-            app:hl_shadowSolidColor="#123456"
-            app:hl_topShow="true">
+            app:hl_topShow="true"
+            app:hl_shadowColor="@color/day_mode_shadow_color"
+            >
 
             <TextView
                 android:layout_width="100dp"
@@ -40,9 +40,8 @@
             app:hl_bottomShow="false"
             app:hl_cardCornerRadius="10dp"
             app:hl_rightShow="true"
-            app:hl_shadowColor="#f00"
+            app:hl_shadowColor="@color/day_mode_shadow_color"
             app:hl_shadowRadius="30dp"
-            app:hl_shadowSolidColor="#123456"
             app:hl_topShow="true">
 
             <LinearLayout
