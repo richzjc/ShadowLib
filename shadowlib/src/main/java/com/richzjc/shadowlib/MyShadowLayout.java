@@ -132,6 +132,7 @@ public class MyShadowLayout extends FrameLayout {
             itemParams.bottomMargin = mps.bottomMargin;
         }
         setShadowPadding();
+        cardView.setLayoutParams(itemParams);
         cardView.setContentPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
         cardView.addView(child, itemParams);
     }
@@ -143,15 +144,19 @@ public class MyShadowLayout extends FrameLayout {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        measureChildWithMargins(cardView, widthMeasureSpec, 0, heightMeasureSpec, 0);
+        ViewGroup.LayoutParams lp = getLayoutParams();
+        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
+        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
+        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+
         Log.i(TAG, cardView.getMeasuredWidth() + ", " + cardView.getMeasuredHeight());
         LayoutParams cardViewParams = (LayoutParams) cardView.getLayoutParams();
         int cardViewWidth = cardView.getMeasuredWidth();
         int cardViewHeight = cardView.getMeasuredHeight();
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-        int widthSizeSpec = MeasureSpec.getSize(widthMeasureSpec);
-        int heightSizeSpec = MeasureSpec.getSize(heightMeasureSpec);
+        int widthSizeSpec = cardViewWidth;
+        int heightSizeSpec = cardViewHeight;
         int realWidth;
         int realHeight;
 
