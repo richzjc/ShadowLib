@@ -12,10 +12,10 @@ import androidx.cardview.widget.CardView;
 
 class MyCardView extends CardView {
 
-    private int leftPadding;
-    private int topPadding;
-    private int rightPadding;
-    private int bottomPadding;
+    public int leftPadding;
+    public int topPadding;
+    public int rightPadding;
+    public int bottomPadding;
 
     public MyCardView(@NonNull Context context) {
         this(context, null);

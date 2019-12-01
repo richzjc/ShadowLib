@@ -132,7 +132,6 @@ public class MyShadowLayout extends FrameLayout {
             itemParams.bottomMargin = mps.bottomMargin;
         }
         setShadowPadding();
-        cardView.setLayoutParams(itemParams);
         cardView.setContentPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
         cardView.addView(child, itemParams);
     }
@@ -258,7 +257,27 @@ public class MyShadowLayout extends FrameLayout {
         }
 
         shadowView.measure(MeasureSpec.makeMeasureSpec(shadowWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(shadowHeight, MeasureSpec.EXACTLY));
-        cardView.measure(MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY));
+        int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
+        int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
+        cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
+        subChildOfCardViewMeasure(cardViewWidthSpec, cardViewHeightSpec);
+    }
+
+    private void subChildOfCardViewMeasure(int cardViewWidthSpec, int cardViewHeightSpec){
+        int childCountOfCardView =  cardView.getChildCount();
+        if(childCountOfCardView > 1){
+            throw new IllegalStateException("cardView 只能有一个子控件");
+        }else if(childCountOfCardView > 0){
+            View child = getChildAt(0);
+            FrameLayout.LayoutParams lp = (LayoutParams) child.getLayoutParams();
+            final int childWidthMeasureSpec = getChildMeasureSpec(cardViewWidthSpec,
+                    cardView.leftPadding + cardView.getContentPaddingLeft() + lp.leftMargin + cardView.rightPadding + cardView.getContentPaddingRight() + lp.rightMargin,
+                    lp.width);
+            final int childHeightMeasureSpec = getChildMeasureSpec(cardViewHeightSpec,
+                    cardView.topPadding + cardView.getContentPaddingTop() + lp.topMargin + cardView.bottomPadding + cardView.getPaddingBottom() + lp.bottomMargin,
+                    lp.height);
+            child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+        }
     }
 
     @Override
