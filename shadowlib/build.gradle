@@ -5,7 +5,7 @@ publish {
     userOrg = 'richzjc'
     groupId = 'com.richzjc'
     artifactId = 'ShadowLib'
-    publishVersion = '1.0.2'
+    publishVersion = '1.0.3'
     desc = '该控件 可以设置哪一边显示阴影  以及圆角'
     website = 'https://github.com/novoda/bintray-release'
 }
