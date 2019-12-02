@@ -156,6 +156,7 @@ public class MyShadowLayout extends FrameLayout {
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         int widthSizeSpec = cardViewWidth;
         int heightSizeSpec = cardViewHeight;
+
         int realWidth;
         int realHeight;
 
