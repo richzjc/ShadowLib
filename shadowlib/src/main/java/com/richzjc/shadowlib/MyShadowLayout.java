@@ -183,8 +183,10 @@ public class MyShadowLayout extends FrameLayout {
                 } else {
                     realWidth = MeasureSpec.getSize(widthMeasureSpec);
                     if(realWidth == 0) {
-                        mearsureCardViewChild(widthMeasureSpec, heightMeasureSpec);
-                        realWidth = cardView.getChildAt(0).getMeasuredWidth() + cardView.getContentPaddingLeft() + cardView.getContentPaddingRight();
+                        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
+                        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
+                        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+                        realWidth = cardView.getMeasuredWidth();
                     }
                 }
                 break;
@@ -209,8 +211,10 @@ public class MyShadowLayout extends FrameLayout {
                 } else {
                     realHeight = MeasureSpec.getSize(heightMeasureSpec);
                     if(realHeight == 0){
-                        mearsureCardViewChild(widthMeasureSpec, heightMeasureSpec);
-                        realHeight = cardView.getChildAt(0).getMeasuredHeight() + cardView.getContentPaddingTop() + cardView.getContentPaddingBottom();
+                        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
+                        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
+                        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
+                        realHeight = cardView.getMeasuredHeight();
                     }
                 }
                 break;
