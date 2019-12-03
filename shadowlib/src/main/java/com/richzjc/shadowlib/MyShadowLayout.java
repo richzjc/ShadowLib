@@ -302,6 +302,7 @@ public class MyShadowLayout extends FrameLayout {
         int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
         cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
+        cardView.setCardViewChildMeasure(cardViewWidthSpec, cardviewHeight);
     }
 
     @Override

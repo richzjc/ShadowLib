@@ -65,7 +65,47 @@ class MyCardView extends CardView {
         }
     }
 
-    public void measureChildren(View child,  int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed){
+    public void measureChildren(View child, int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed) {
         measureChildWithMargins(child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed);
+    }
+
+    public void setCardViewChildMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        if (getChildCount() > 0) {
+            View child = getChildAt(0);
+            ViewGroup.LayoutParams lp = child.getLayoutParams();
+            int widthSpecSize = MeasureSpec.getSize(widthMeasureSpec);
+            int heightSpecSize = MeasureSpec.getSize(heightMeasureSpec);
+
+            int realHeight = 0;
+            int realWidth = 0;
+
+            if (lp.width > 0) {
+                realWidth = Math.min(lp.width, widthSpecSize -  getContentPaddingLeft() - leftPadding - rightPadding - getContentPaddingRight());
+            }else if(lp.width == ViewGroup.LayoutParams.MATCH_PARENT){
+                realWidth = widthSpecSize -  getContentPaddingLeft() - leftPadding - rightPadding - getContentPaddingRight();
+            }else{
+                measureChildren(child,
+                        widthMeasureSpec,
+                        leftPadding + rightPadding + getContentPaddingLeft() + getContentPaddingRight(),
+                        heightMeasureSpec,
+                        topPadding + bottomPadding + getContentPaddingBottom() + getContentPaddingTop());
+                realWidth = child.getMeasuredWidth();
+            }
+
+            if (lp.height > 0) {
+                realHeight = Math.min(lp.height, heightSpecSize -  getContentPaddingTop() - topPadding - bottomPadding - getContentPaddingBottom());
+            }else if(lp.height == ViewGroup.LayoutParams.MATCH_PARENT){
+                realHeight = heightSpecSize -  getContentPaddingTop() - topPadding - bottomPadding - getContentPaddingBottom();
+            }else{
+                measureChildren(child,
+                        widthMeasureSpec,
+                        leftPadding + rightPadding + getContentPaddingLeft() + getContentPaddingRight(),
+                        heightMeasureSpec,
+                        topPadding + bottomPadding + getContentPaddingBottom() + getContentPaddingTop());
+                realHeight = child.getMeasuredHeight();
+            }
+
+            child.measure(MeasureSpec.makeMeasureSpec(realWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(realHeight, MeasureSpec.EXACTLY));
+        }
     }
 }
