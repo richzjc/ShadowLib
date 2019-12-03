@@ -65,10 +65,6 @@ class MyCardView extends CardView {
         }
     }
 
-    public void setRealDimension(int width, int height) {
-        setMeasuredDimension(width, height);
-    }
-
     public void measureChildren(View child,  int parentWidthMeasureSpec, int widthUsed, int parentHeightMeasureSpec, int heightUsed){
         measureChildWithMargins(child, parentWidthMeasureSpec, widthUsed, parentHeightMeasureSpec, heightUsed);
     }

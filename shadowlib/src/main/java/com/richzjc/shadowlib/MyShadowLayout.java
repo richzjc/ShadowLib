@@ -169,15 +169,6 @@ public class MyShadowLayout extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         ViewGroup.LayoutParams lp = getLayoutParams();
-//        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
-//        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
-//        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-
-//        LayoutParams cardViewParams = (LayoutParams) cardView.getLayoutParams();
-//        int cardViewWidth = cardView.getMeasuredWidth();
-//        int cardViewHeight = cardView.getMeasuredHeight();
-
-
         int widthMode = MeasureSpec.getMode(widthMeasureSpec);
         int heightMode = MeasureSpec.getMode(heightMeasureSpec);
 
@@ -298,25 +289,7 @@ public class MyShadowLayout extends FrameLayout {
         cardViewRect.bottom = cardViewRect.top + cardviewHeight;
         int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
-        cardView.setRealDimension(cardViewWidth, cardviewHeight);
-        subChildOfCardViewMeasure(cardViewWidthSpec, cardViewHeightSpec);
-    }
-
-    private void subChildOfCardViewMeasure(int cardViewWidthSpec, int cardViewHeightSpec) {
-        int childCountOfCardView = cardView.getChildCount();
-        if (childCountOfCardView > 1) {
-            throw new IllegalStateException("cardView 只能有一个子控件");
-        } else if (childCountOfCardView > 0) {
-            View child = getChildAt(0);
-            FrameLayout.LayoutParams lp = (LayoutParams) child.getLayoutParams();
-            final int childWidthMeasureSpec = getChildMeasureSpec(cardViewWidthSpec,
-                    cardView.leftPadding + cardView.getContentPaddingLeft() + lp.leftMargin + cardView.rightPadding + cardView.getContentPaddingRight() + lp.rightMargin,
-                    lp.width);
-            final int childHeightMeasureSpec = getChildMeasureSpec(cardViewHeightSpec,
-                    cardView.topPadding + cardView.getContentPaddingTop() + lp.topMargin + cardView.bottomPadding + cardView.getPaddingBottom() + lp.bottomMargin,
-                    lp.height);
-            child.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-        }
+        cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
     }
 
     @Override
