@@ -7,7 +7,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -26,10 +25,20 @@ public class MyShadowLayout extends FrameLayout {
     private float cardCornerRadius;
     private ShadowView shadowView;
     private MyCardView cardView;
-    private final String TAG = MyShadowLayout.class.getSimpleName();
     private Rect cardViewRect = new Rect();
     private Rect shadowRect = new Rect();
 
+
+    private int leftPadding;
+    private int topPadding;
+    private int rightPadding;
+    private int bottomPadding;
+
+
+    private int originLeftPadding;
+    private int originTopPadding;
+    private int originRightPadding;
+    private int originBottomPadding;
 
     public void setShadowShow(boolean leftShow, boolean topShow, boolean rightShow, boolean bottomShow) {
         this.leftShow = leftShow;
@@ -90,13 +99,9 @@ public class MyShadowLayout extends FrameLayout {
     @Override
     public void setBackground(Drawable background) {
         if (background instanceof ColorDrawable) {
-            if (cardView != null) {
-                cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
-            } else {
-                createCardView();
-                createShadowView();
-                cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
-            }
+            createCardView();
+            createShadowView();
+            cardView.setCardBackgroundColor(((ColorDrawable) background).getColor());
         }
     }
 
@@ -117,8 +122,7 @@ public class MyShadowLayout extends FrameLayout {
     private void initCardView() {
         cardView.setElevation(0);
         cardView.setRadius(cardCornerRadius);
-        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
-        addView(cardView, params);
+        addView(cardView);
     }
 
     private void addToCardView(View child, ViewGroup.LayoutParams params) {
@@ -126,12 +130,15 @@ public class MyShadowLayout extends FrameLayout {
         ViewGroup.MarginLayoutParams itemParams = new FrameLayout.LayoutParams(params.width, params.height);
         if (params instanceof MarginLayoutParams) {
             MarginLayoutParams mps = (MarginLayoutParams) params;
-            cardView.setContentPadding(getPaddingLeft() + mps.leftMargin,
-                    getPaddingTop() + mps.topMargin,
-                    getPaddingRight() + mps.rightMargin,
-                    getPaddingBottom() + mps.bottomMargin);
+            originLeftPadding = getPaddingLeft() + mps.leftMargin;
+            originTopPadding = getPaddingTop() + mps.topMargin;
+            originRightPadding = getPaddingRight() + mps.rightMargin;
+            originBottomPadding = getPaddingBottom() + mps.bottomMargin;
         } else {
-            cardView.setContentPadding(getPaddingLeft(), getPaddingTop(), getPaddingRight(), getPaddingBottom());
+            originLeftPadding = getPaddingLeft();
+            originTopPadding = getPaddingTop();
+            originRightPadding = getPaddingRight();
+            originBottomPadding = getPaddingBottom();
         }
         setShadowPadding();
         cardView.addView(child, itemParams);
@@ -150,89 +157,59 @@ public class MyShadowLayout extends FrameLayout {
 
     @Override
     public void setPadding(int left, int top, int right, int bottom) {
-        cardView.setContentPadding(cardView.getContentPaddingLeft() - getPaddingLeft() + left,
-                cardView.getContentPaddingTop() - getPaddingTop() + top,
-                cardView.getContentPaddingRight() - getPaddingRight() + right,
-                cardView.getContentPaddingBottom() - getPaddingBottom() + bottom);
-    }
-
-    private void mearsureCardViewChild(int widthMeasureSpec, int heightMeasureSpec) {
-        int count = cardView.getChildCount();
-        if (count > 0) {
-            cardView.measureChildren(cardView.getChildAt(0), widthMeasureSpec,
-                    cardView.getContentPaddingLeft() + cardView.getContentPaddingRight(),
-                    heightMeasureSpec,
-                    cardView.getContentPaddingTop() + cardView.getContentPaddingBottom());
+        originLeftPadding = left;
+        originTopPadding = top;
+        originRightPadding = right;
+        originBottomPadding = bottom;
+        if (cardView.getChildCount() > 0) {
+            ViewGroup.LayoutParams params = cardView.getChildAt(0).getLayoutParams();
+            if (params instanceof MarginLayoutParams) {
+                MarginLayoutParams mps = (MarginLayoutParams) params;
+                originLeftPadding = left + mps.leftMargin;
+                originTopPadding = top + mps.topMargin;
+                originRightPadding = right + mps.rightMargin;
+                originBottomPadding = bottom + mps.bottomMargin;
+            }
         }
+        requestLayout();
     }
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-        ViewGroup.LayoutParams lp = getLayoutParams();
-        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
-        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
-
-        int realHeight = 0;
-        int realWidth = 0;
-
-        switch (widthMode) {
-            case MeasureSpec.EXACTLY:
-            case MeasureSpec.UNSPECIFIED:
-                if (lp.width > 0) {
-                    realWidth = lp.width;
-                } else {
-                    realWidth = MeasureSpec.getSize(widthMeasureSpec);
-                    if(realWidth == 0) {
-                        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
-                        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
-                        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-                        realWidth = cardView.getMeasuredWidth();
-                    }
-                }
-                break;
-
-            case MeasureSpec.AT_MOST:
-                mearsureCardViewChild(widthMeasureSpec, heightMeasureSpec);
-                realWidth = cardView.getChildAt(0).getMeasuredWidth() + cardView.getContentPaddingLeft() + cardView.getContentPaddingRight();
-                if (leftShow)
-                    realWidth += shadowRadius;
-
-                if (rightShow)
-                    realWidth += shadowRadius;
-                realWidth = Math.min(MeasureSpec.getSize(widthMeasureSpec), realWidth);
-                break;
-        }
-
-        switch (heightMode) {
-            case MeasureSpec.EXACTLY:
-            case MeasureSpec.UNSPECIFIED:
-                if (lp.height > 0) {
-                    realHeight = lp.height;
-                } else {
-                    realHeight = MeasureSpec.getSize(heightMeasureSpec);
-                    if(realHeight == 0){
-                        final int childWidthMeasureSpec = getChildMeasureSpec(widthMeasureSpec, 0, lp.width);
-                        final int childHeightMeasureSpec = getChildMeasureSpec(heightMeasureSpec, 0, lp.height);
-                        cardView.measure(childWidthMeasureSpec, childHeightMeasureSpec);
-                        realHeight = cardView.getMeasuredHeight();
-                    }
-                }
-                break;
-
-            case MeasureSpec.AT_MOST:
-                mearsureCardViewChild(widthMeasureSpec, heightMeasureSpec);
-                realHeight = cardView.getChildAt(0).getMeasuredHeight() + cardView.getContentPaddingTop() + cardView.getContentPaddingBottom();
-                if (topShow)
-                    realHeight += shadowRadius;
-
-                if (bottomShow)
-                    realHeight += shadowRadius;
-                realHeight = Math.min(MeasureSpec.getSize(heightMeasureSpec), realHeight);
-                break;
-        }
-        setMeasuredDimension(realWidth, realHeight);
+        cardView.setContentPadding(originLeftPadding, originTopPadding, originRightPadding, originBottomPadding);
+        cardView.measure(widthMeasureSpec, heightMeasureSpec);
+        setCurrentViewDimens(widthMeasureSpec, heightMeasureSpec);
         setShadowMeasure();
         setCardViewMeasure();
+    }
+
+    private void setCurrentViewDimens(int widthMeasureSpec, int heightMeasureSpec) {
+        int realWidth = cardView.getMeasuredWidth();
+        int realHeight = cardView.getMeasuredHeight();
+        int widthSize = MeasureSpec.getSize(widthMeasureSpec);
+        int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        ViewGroup.LayoutParams params = getLayoutParams();
+        if (params != null && params.width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            if (leftShow)
+                realWidth += shadowRadius;
+            if (rightShow)
+                realWidth += shadowRadius;
+
+            if(widthSize != 0){
+                realWidth = Math.min(widthSize, realWidth);
+            }
+        }
+
+        if (params != null && params.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            if (topShow)
+                realHeight += shadowRadius;
+            if (bottomShow)
+                realHeight += shadowRadius;
+            if(heightSize != 0) {
+                realHeight = Math.min(heightSize, realHeight);
+            }
+        }
+        setMeasuredDimension(realWidth, realHeight);
     }
 
     private void setShadowMeasure() {
@@ -265,6 +242,10 @@ public class MyShadowLayout extends FrameLayout {
     }
 
     private void setCardViewMeasure() {
+        cardView.setContentPadding(originLeftPadding + leftPadding,
+                originTopPadding + topPadding,
+                originRightPadding + rightPadding,
+                originBottomPadding + bottomPadding);
         int cardViewWidth = getMeasuredWidth();
         int cardviewHeight = getMeasuredHeight();
 
@@ -302,7 +283,6 @@ public class MyShadowLayout extends FrameLayout {
         int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
         cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
-        cardView.setCardViewChildMeasure(cardViewWidthSpec, cardviewHeight);
     }
 
     @Override
@@ -312,22 +292,24 @@ public class MyShadowLayout extends FrameLayout {
     }
 
     private void setShadowPadding() {
-        int topPadding = 0;
-        int bottomPadding = 0;
-        int leftPadding = 0;
-        int rightPadding = 0;
         if (!topShow)
             topPadding = (int) (shadowRadius + cardCornerRadius);
+        else
+            topPadding = 0;
 
         if (!bottomShow)
             bottomPadding = (int) (shadowRadius + cardCornerRadius);
+        else
+            bottomPadding = 0;
 
         if (!leftShow)
             leftPadding = (int) (shadowRadius + cardCornerRadius);
+        else
+            leftPadding = 0;
 
         if (!rightShow)
             rightPadding = (int) (shadowRadius + cardCornerRadius);
-
-        cardView.setMyPadding(leftPadding, topPadding, rightPadding, bottomPadding);
+        else
+            rightPadding = 0;
     }
 }
