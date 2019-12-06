@@ -53,4 +53,8 @@ class MyCardView extends CardView {
             e.printStackTrace();
         }
     }
+
+    public void setMeasureDimens(int cardViewWidth, int cardviewHeight) {
+        setMeasuredDimension(cardViewWidth, cardviewHeight);
+    }
 }

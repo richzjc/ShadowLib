@@ -180,7 +180,7 @@ public class MyShadowLayout extends FrameLayout {
         cardView.measure(widthMeasureSpec, heightMeasureSpec);
         setCurrentViewDimens(widthMeasureSpec, heightMeasureSpec);
         setShadowMeasure();
-        setCardViewMeasure();
+        setCardViewMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     private void setCurrentViewDimens(int widthMeasureSpec, int heightMeasureSpec) {
@@ -188,27 +188,41 @@ public class MyShadowLayout extends FrameLayout {
         int realHeight = cardView.getMeasuredHeight();
         int widthSize = MeasureSpec.getSize(widthMeasureSpec);
         int heightSize = MeasureSpec.getSize(heightMeasureSpec);
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
         ViewGroup.LayoutParams params = getLayoutParams();
-        if (params != null && params.width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+        if (widthMode == MeasureSpec.UNSPECIFIED) {
             if (leftShow)
                 realWidth += shadowRadius;
             if (rightShow)
                 realWidth += shadowRadius;
 
-            if(widthSize != 0){
+        } else if (params != null && params.width == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            if (leftShow)
+                realWidth += shadowRadius;
+            if (rightShow)
+                realWidth += shadowRadius;
+
+            if (widthSize != 0) {
                 realWidth = Math.min(widthSize, realWidth);
             }
         }
 
-        if (params != null && params.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+        if (heightMode == MeasureSpec.UNSPECIFIED) {
             if (topShow)
                 realHeight += shadowRadius;
             if (bottomShow)
                 realHeight += shadowRadius;
-            if(heightSize != 0) {
+        } else if (params != null && params.height == ViewGroup.LayoutParams.WRAP_CONTENT) {
+            if (topShow)
+                realHeight += shadowRadius;
+            if (bottomShow)
+                realHeight += shadowRadius;
+            if (heightSize != 0) {
                 realHeight = Math.min(heightSize, realHeight);
             }
         }
+
         setMeasuredDimension(realWidth, realHeight);
     }
 
@@ -241,7 +255,7 @@ public class MyShadowLayout extends FrameLayout {
         shadowView.measure(MeasureSpec.makeMeasureSpec(shadowWidth, MeasureSpec.EXACTLY), MeasureSpec.makeMeasureSpec(shadowHeight, MeasureSpec.EXACTLY));
     }
 
-    private void setCardViewMeasure() {
+    private void setCardViewMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         cardView.setContentPadding(originLeftPadding + leftPadding,
                 originTopPadding + topPadding,
                 originRightPadding + rightPadding,
@@ -280,9 +294,19 @@ public class MyShadowLayout extends FrameLayout {
         }
 
         cardViewRect.bottom = cardViewRect.top + cardviewHeight;
+
         int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
+
+        if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.UNSPECIFIED) {
+            cardViewWidthSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        }
+
+        if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
+            cardViewHeightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        }
         cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
+        cardView.setMeasureDimens(cardViewWidth, cardviewHeight);
     }
 
     @Override

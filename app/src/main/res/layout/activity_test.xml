@@ -1,50 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.richzjc.shadowlib.MyShadowLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="15dp"
-    android:layout_marginTop="15dp"
-    android:layout_marginRight="15dp"
-    app:hl_cardCornerRadius="5dp"
-    app:hl_shadowColor="@color/day_mode_shadow_color"
-    app:hl_shadowRadius="10dp"
-    app:hl_topShow="false">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="500dp"
-        android:layout_height="300dp"
-        android:layout_marginBottom="15dp"
-        android:background="#f00"
-        android:orientation="vertical"
-        android:paddingLeft="15dp"
-        android:paddingTop="15dp"
-        android:paddingRight="15dp"
-        android:paddingBottom="20dp">
+    <com.richzjc.shadowlib.MyShadowLayout
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        app:hl_cardCornerRadius="5dp"
+        app:hl_shadowColor="@color/day_mode_shadow_color"
+        app:hl_shadowRadius="10dp"
+        app:hl_topShow="false">
+
+        <LinearLayout
+            android:layout_width="500dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="15dp"
+            android:background="#f00"
+            android:orientation="vertical"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            android:paddingRight="15dp"
+            android:paddingBottom="20dp">
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="今天是你的生日"
-            android:textColor="#1482f0"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="今天是你的生日"
+                android:textColor="#1482f0"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="今天是你的生日"
-            android:textColor="#1482f0"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="今天是你的生日"
+                android:textColor="#1482f0"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="今天是你的生日"
-            android:textColor="#1482f0"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-</com.richzjc.shadowlib.MyShadowLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="今天是你的生日"
+                android:textColor="#1482f0"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </com.richzjc.shadowlib.MyShadowLayout>
+</ScrollView>
