@@ -136,4 +136,5 @@
   <androidx.compose/>
   <com.google.androidbrowserhelper/>
   <org.jetbrains.kotlin/>
+  <com.google.prefab/>
 </metadata>

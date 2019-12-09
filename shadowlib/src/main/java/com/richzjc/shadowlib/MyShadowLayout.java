@@ -303,10 +303,9 @@ public class MyShadowLayout extends FrameLayout {
         }
 
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
-            cardViewHeightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+            cardViewHeightSpec = heightMeasureSpec;
         }
         cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
-        cardView.setMeasureDimens(cardViewWidth, cardviewHeight);
     }
 
     @Override
