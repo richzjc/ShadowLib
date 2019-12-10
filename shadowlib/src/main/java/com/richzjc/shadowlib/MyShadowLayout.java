@@ -310,7 +310,6 @@ public class MyShadowLayout extends FrameLayout {
             cardViewWidth += (shadowRadius + cardCornerRadius);
         }
 
-        cardViewRect.right = cardViewRect.left + cardViewWidth;
 
         if (topShow) {
             cardviewHeight -= shadowRadius;
@@ -326,7 +325,6 @@ public class MyShadowLayout extends FrameLayout {
             cardviewHeight += (shadowRadius + cardCornerRadius);
         }
 
-        cardViewRect.bottom = cardViewRect.top + cardviewHeight;
 
         int cardViewWidthSpec = MeasureSpec.makeMeasureSpec(cardViewWidth, MeasureSpec.EXACTLY);
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
@@ -339,6 +337,8 @@ public class MyShadowLayout extends FrameLayout {
             cardViewHeightSpec = heightMeasureSpec;
         }
         cardView.measure(cardViewWidthSpec, cardViewHeightSpec);
+        cardViewRect.right = cardViewRect.left + cardView.getMeasuredWidth();
+        cardViewRect.bottom = cardViewRect.top  + cardView.getMeasuredHeight();
     }
 
     @Override
