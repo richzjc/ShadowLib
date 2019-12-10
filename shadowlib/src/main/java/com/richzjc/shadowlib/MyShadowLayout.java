@@ -179,8 +179,9 @@ public class MyShadowLayout extends FrameLayout {
         cardView.setContentPadding(originLeftPadding, originTopPadding, originRightPadding, originBottomPadding);
         cardView.measure(widthMeasureSpec, heightMeasureSpec);
         setCurrentViewDimens(widthMeasureSpec, heightMeasureSpec);
-        setShadowMeasure();
         setCardViewMeasure(widthMeasureSpec, heightMeasureSpec);
+        setCurrentViewDimens();
+        setShadowMeasure();
     }
 
     private void setCurrentViewDimens(int widthMeasureSpec, int heightMeasureSpec) {
@@ -221,6 +222,38 @@ public class MyShadowLayout extends FrameLayout {
             if (heightSize != 0) {
                 realHeight = Math.min(heightSize, realHeight);
             }
+        }
+
+        setMeasuredDimension(realWidth, realHeight);
+    }
+
+    private void setCurrentViewDimens() {
+        int realWidth = cardView.getMeasuredWidth();
+        int realHeight = cardView.getMeasuredHeight();
+
+        if (leftShow) {
+            realWidth += shadowRadius;
+        } else {
+            realWidth -= (shadowRadius + cardCornerRadius);
+        }
+
+        if (rightShow) {
+            realWidth += shadowRadius;
+        } else {
+            realWidth -= (shadowRadius + cardCornerRadius);
+        }
+
+
+        if (topShow) {
+            realHeight += shadowRadius;
+        } else {
+            realHeight -= (shadowRadius + cardCornerRadius);
+        }
+
+        if (bottomShow) {
+            realHeight += shadowRadius;
+        } else {
+            realHeight -= (shadowRadius + cardCornerRadius);
         }
 
         setMeasuredDimension(realWidth, realHeight);
@@ -299,7 +332,7 @@ public class MyShadowLayout extends FrameLayout {
         int cardViewHeightSpec = MeasureSpec.makeMeasureSpec(cardviewHeight, MeasureSpec.EXACTLY);
 
         if (MeasureSpec.getMode(widthMeasureSpec) == MeasureSpec.UNSPECIFIED) {
-            cardViewWidthSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+            cardViewWidthSpec = widthMeasureSpec;
         }
 
         if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.UNSPECIFIED) {
