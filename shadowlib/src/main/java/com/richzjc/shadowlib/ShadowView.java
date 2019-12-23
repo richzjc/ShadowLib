@@ -42,6 +42,7 @@ class ShadowView extends View {
     private void initPaint(){
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
+        setLayerType(LAYER_TYPE_SOFTWARE, null);
     }
 
     @Override
